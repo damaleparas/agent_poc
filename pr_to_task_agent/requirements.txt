@@ -1,0 +1,20 @@
+# Server
+fastapi
+uvicorn[standard]
+
+# Config
+pydantic
+pydantic-settings
+
+# LangChain & Graph
+langchain
+langgraph
+langchain-anthropic  # For Claude
+langchain-google-genai # For Gemini
+
+# API Clients
+requests                 # For ClickUp
+PyGithub                 # For GitHub
+google-api-python-client # For Google Drive
+google-auth-httplib2
+google-auth-oauthlib
