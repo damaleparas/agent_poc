@@ -20,8 +20,8 @@ def create_clickup_task(task_name: str, description: str) -> str:
         "description": description,
         "assignees": [
             settings.CLICKUP_ASSIGNEE_ID
-        ],
-        "status": "Open" # Or any status you prefer
+        ]
+        # "status": "Open" # Or any status you prefer
     }
 
     try:

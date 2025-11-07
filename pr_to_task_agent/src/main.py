@@ -1,6 +1,7 @@
 import uvicorn
 from fastapi import FastAPI, Request, BackgroundTasks, HTTPException
 from pydantic import BaseModel, Field
+from typing import Optional # <-- Make sure this is imported
 
 # Import the compiled graph from our graph.py file
 from src.graph import app_runnable, PRWorkflowState
@@ -20,6 +21,7 @@ class PullRequest(BaseModel):
     title: str
     html_url: str = Field(..., alias='html_url')
     head: PRHead
+    body: Optional[str] = None  # <--- ADD THIS LINE
 
 class GitHubWebhookPayload(BaseModel):
     action: str
@@ -33,7 +35,8 @@ def run_pr_workflow(payload: GitHubWebhookPayload):
     initial_state = {
         "pr_title": payload.pull_request.title,
         "pr_url": payload.pull_request.html_url,
-        "pr_branch": payload.pull_request.head.ref
+        "pr_branch": payload.pull_request.head.ref,
+        "pr_body": payload.pull_request.body  # <--- ADD THIS LINE
     }
     
     try:
