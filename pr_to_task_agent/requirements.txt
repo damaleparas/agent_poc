@@ -5,6 +5,7 @@ uvicorn[standard]
 # Config
 pydantic
 pydantic-settings
+python-dotenv
 
 # LangChain & Graph
 langchain

@@ -7,6 +7,7 @@ from src.config import settings
 
 # Initialize the GitHub client
 gh = Github(settings.GITHUB_TOKEN)
+print(f"--- LOADING TOKEN. First 10 chars: {settings.GITHUB_TOKEN}...")
 
 def parse_pr_url(pr_url: str) -> dict:
     """Helper to get repo name and PR number from URL."""
