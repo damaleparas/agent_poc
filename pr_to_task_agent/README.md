@@ -65,6 +65,19 @@ Now, you must find and fill in the values in your new `.env` file.
 # This starts your server on http://localhost:8000
 uvicorn src.main:app --reload
 ```
+open another cmd and put the query there
+```bash
+Invoke-RestMethod -Uri http://localhost:8000/webhook/github -Method POST -ContentType "application/json" -Body '{
+  "action": "opened",
+  "pull_request": {
+    "title": "This is a REAL test PR",
+    "html_url": "https://github.com/damaleparas/task-correlation-test-repo/pull/2",
+    "head": {
+      "ref": "my-test-branch-name"
+    }
+  }
+}'
+```
 
 ### 4. Test (Locally)
 In a **new terminal**, run the test script.
@@ -73,3 +86,4 @@ chmod +x ./test_webhook.sh
 ./test_webhook.sh
 ```
 Watch your server logs. It will now show it's using Gemini or Claude!
+Thanks
